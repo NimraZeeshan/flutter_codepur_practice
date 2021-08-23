@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_codepur_practice/widgets/drawer.dart';
 
 class Homepage extends StatelessWidget {
   final days = 30;
@@ -14,7 +15,7 @@ class Homepage extends StatelessWidget {
           child: Text('$name working on flutter with CodePur  in $days days'),
         ),
       ),
-      // drawer: Drawer(),
+      drawer: MyDrawer(),
     ));
   }
 }

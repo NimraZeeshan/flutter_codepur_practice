@@ -67,17 +67,12 @@ class _LoginPageState extends State<LoginPage> {
                         hintText: 'Enter username',
                         labelText: 'UserName',
                       ),
-                      // validator: (String? value) {
-                      //   if (value!.isEmpty) {
-                      //     return "Username cann't be empty";
-                      //   }
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "username can not be empty";
                         }
                         return null;
                       },
-
                       onChanged: (value) {
                         name = value;
                         setState(() {});
@@ -91,7 +86,9 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       validator: (String? value) {
                         if (value!.isEmpty) {
-                          return "password cann't be empty";
+                          return "password can not be empty";
+                        } else if (value.length < 4) {
+                          return "password sould be at least 4";
                         }
                         return null;
                       },
@@ -102,7 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                           BorderRadius.circular(changeButton ? 50 : 8),
                       color: Colors.blue,
                       child: InkWell(
-                        splashColor: Colors.green,
+                        // splashColor: Colors.green,
                         onTap: () => moveToHome(context),
                         child: AnimatedContainer(
                           duration: Duration(seconds: 1),
