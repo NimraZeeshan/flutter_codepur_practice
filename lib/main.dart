@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_codepur_practice/Screens/home_page.dart';
-import 'package:flutter_codepur_practice/Screens/login_page.dart';
+import 'package:flutter_codepur_practice/Screens/login_screen/login_page.dart';
 import 'package:flutter_codepur_practice/utils/routes.dart';
 import 'package:google_fonts/google_fonts.dart';
 
