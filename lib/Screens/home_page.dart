@@ -14,7 +14,7 @@ class Homepage extends StatelessWidget {
           child: Text('$name working on flutter with CodePur  in $days days'),
         ),
       ),
-      drawer: Drawer(),
+      // drawer: Drawer(),
     ));
   }
 }
