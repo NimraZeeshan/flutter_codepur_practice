@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_codepur_practice/Screens/buttons/login_button.dart';
-//import 'package:flutter_codepur_practice/utils/routes.dart';
+import 'package:flutter_codepur_practice/utils/routes.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -10,11 +9,28 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   String name = "";
   bool changeButton = false;
+  final _formKey = GlobalKey<FormState>();
+
+  moveToHome(BuildContext context) async {
+    if (_formKey.currentState!.validate()) {
+      setState(() {
+        changeButton = true;
+      });
+      await Future.delayed(Duration(seconds: 1));
+      await Navigator.pushNamed(context, MyRoutes.homeRoute);
+      setState(() {
+        changeButton = false;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
-        color: Colors.white,
-        child: SingleChildScrollView(
+      color: Colors.white,
+      child: SingleChildScrollView(
+        child: Form(
+          key: _formKey,
           child: Column(
             children: [
               Image.asset("assets/images/Login_image.png",
@@ -47,14 +63,25 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   children: [
                     TextFormField(
-                      onChanged: (value) {
-                        name = value;
-                        setState(() {});
-                      },
                       decoration: InputDecoration(
                         hintText: 'Enter username',
                         labelText: 'UserName',
                       ),
+                      // validator: (String? value) {
+                      //   if (value!.isEmpty) {
+                      //     return "Username cann't be empty";
+                      //   }
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "username can not be empty";
+                        }
+                        return null;
+                      },
+
+                      onChanged: (value) {
+                        name = value;
+                        setState(() {});
+                      },
                     ),
                     TextFormField(
                       obscureText: true,
@@ -62,57 +89,46 @@ class _LoginPageState extends State<LoginPage> {
                         hintText: 'Enter password',
                         labelText: 'Password',
                       ),
+                      validator: (String? value) {
+                        if (value!.isEmpty) {
+                          return "password cann't be empty";
+                        }
+                        return null;
+                      },
                     ),
                     SizedBox(height: 40),
-                    LoginButton()
-                    // InkWell(
-                    //   //splashColor: Colors.redAccent,
-                    //   //hoverColor: Colors.green,
-                    //   onTap: () {
-                    //     setState(() {
-                    //       changeButton = true;
-                    //     });
-
-                    //     //Navigator.pushNamed(context, MyRoutes.homeRoute);
-                    //   },
-                    //   child: AnimatedContainer(
-                    //     duration: Duration(seconds: 1),
-                    //     height: 40,
-                    //     width: 130,
-                    //     alignment: Alignment.center,
-                    //     child: Text(
-                    //       'Login',
-                    //       style: TextStyle(
-                    //           color: Colors.white, fontWeight: FontWeight.w900),
-                    //     ),
-                    //     decoration: BoxDecoration(
-                    //       borderRadius: BorderRadius.circular(6),
-                    //       color: Colors.blue,
-                    //     ),
-                    //   ),
-                    // ),
-
-                    // Padding(
-                    //   padding: const EdgeInsets.symmetric(
-                    //       vertical: 32, horizontal: 32),
-                    //   child: ElevatedButton(
-                    //     onPressed: () {
-                    //       Navigator.pushNamed(context, MyRoutes.homeRoute);
-                    //     },
-                    //     child: Text('Login',
-                    //         style: TextStyle(
-                    //             color: Colors.white,
-                    //             fontWeight: FontWeight.w900)),
-                    //     style: TextButton.styleFrom(
-                    //         shadowColor: Colors.black45,
-                    //         minimumSize: Size(100, 40)),
-                    //   ),
-                    // ),
+                    Material(
+                      borderRadius:
+                          BorderRadius.circular(changeButton ? 50 : 8),
+                      color: Colors.blue,
+                      child: InkWell(
+                        splashColor: Colors.green,
+                        onTap: () => moveToHome(context),
+                        child: AnimatedContainer(
+                          duration: Duration(seconds: 1),
+                          height: 50,
+                          width: changeButton ? 50 : 150,
+                          alignment: Alignment.center,
+                          child: changeButton
+                              ? Icon(Icons.done, color: Colors.white)
+                              : Text(
+                                  'Login',
+                                  style: TextStyle(
+                                      color: changeButton
+                                          ? Colors.black
+                                          : Colors.white,
+                                      fontWeight: FontWeight.w900),
+                                ),
+                        ),
+                      ),
+                    )
                   ],
                 ),
-              )
+              ),
             ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
