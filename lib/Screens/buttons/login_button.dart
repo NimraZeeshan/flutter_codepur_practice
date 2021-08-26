@@ -37,7 +37,8 @@ class _LoginButtonState extends State<LoginButton> {
               ),
         decoration: BoxDecoration(
           //   shape: changeButton ? BoxShape.circle : BoxShape.rectangle,
-          borderRadius: BorderRadius.circular(changeButton ? 50 : 8),
+          borderRadius: BorderRadius.circular(changeButton ? 50 : 30),
+          //borderRadius: BorderRadius.circular(10),
           color: Colors.blue,
         ),
       ),

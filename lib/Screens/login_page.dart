@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_codepur_practice/Screens/buttons/Google_SignUp_Button.dart';
+//import 'package:flutter_codepur_practice/utils/background_painter.dart';
 import 'package:flutter_codepur_practice/utils/routes.dart';
 
 class LoginPage extends StatefulWidget {
@@ -33,8 +35,10 @@ class _LoginPageState extends State<LoginPage> {
           key: _formKey,
           child: Column(
             children: [
+              //CustomPaint(painter: BackgroundPainter()),
               Image.asset("assets/images/Login_image.png",
                   height: 160, fit: BoxFit.cover),
+
               SizedBox(
                 height: 20,
               ),
@@ -122,6 +126,7 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
               ),
+              GoogleSignupButton(),
             ],
           ),
         ),
