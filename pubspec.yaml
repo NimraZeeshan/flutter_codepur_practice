@@ -30,12 +30,23 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_fonts: ^2.1.0
   font_awesome_flutter: ^9.1.0
+  #Firebase
+  firebase_database:
+  firebase_core :
+  cloud_firestore:
+  firebase_auth: 
+  #stateManagement
+  provider: 
+
+    #GoogleSignIn
+  google_sign_in: 
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  firebase_database:
-  firebase_core :
+
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

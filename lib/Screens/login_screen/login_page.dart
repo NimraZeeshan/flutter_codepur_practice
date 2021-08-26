@@ -126,7 +126,7 @@ class _LoginPageState extends State<LoginPage> {
                   ],
                 ),
               ),
-              GoogleSignupButton(),
+              GoogleSignupButtonWidget(),
             ],
           ),
         ),

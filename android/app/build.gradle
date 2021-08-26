@@ -39,8 +39,10 @@ android {
         applicationId "com.example.flutter_codepur_practice"
         minSdkVersion 16
         targetSdkVersion 30
+        multiDexEnabled true
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        
     }
 
     buildTypes {
@@ -58,5 +60,6 @@ flutter {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.android.support:multidex:1.0.3'
     
 }

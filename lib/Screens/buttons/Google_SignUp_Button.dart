@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_codepur_practice/providers/google_signin.dart';
+import 'package:provider/provider.dart';
 
-class GoogleSignupButton extends StatelessWidget {
+class GoogleSignupButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Container(
         padding: EdgeInsets.all(4),
         child: OutlinedButton.icon(
           label: Text(
             'Sign In With Google',
-            style: TextStyle(
-                color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
           ),
           icon: FaIcon(FontAwesomeIcons.google, color: Colors.red),
           style: OutlinedButton.styleFrom(
@@ -18,7 +19,11 @@ class GoogleSignupButton extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
             shadowColor: Colors.black,
           ),
-          onPressed: () {},
+          onPressed: () {
+            final provider =
+                Provider.of<GoogleSignInProvider>(context, listen: false);
+            provider.login();
+          },
         ),
       );
 }
